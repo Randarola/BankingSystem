@@ -6,14 +6,14 @@ public class AccountRepository
 {
     public Account? GetByAccountNumber(string accountNumber)
     {
-        throw new NotImplementedException();
+        return GetAll().FirstOrDefault( account => account.AccountNumber == accountNumber);
     }
 
     public Account? GetByCustomerId(int customerId)
     {
-        throw new NotImplementedException();
+        return GetAll().FirstOrDefault( account => account.CustomerId == customerId);
     }
-
+     
     public List<Account> GetAll()
     {
 
