@@ -27,7 +27,20 @@ public class CustomerRepository
 
     public void Add(Customer customer)
     {
-        throw new NotImplementedException();    
+
+        var customers = GetAll();
+
+        customers.Add(customer);
+
+        var json = JsonSerializer.Serialize(
+            customers,
+            new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
+
+        File.WriteAllText(DataPaths.Customers, json);
+
     }
 
     public void Update(Customer customer)
