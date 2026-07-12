@@ -1,16 +1,16 @@
 [
 	{
-		"id": 1,
-		"firstName": "Jan",
-		"lastName": "Kowalski",
-		"pesel": "12345678901",
-		"passwordHash": "test1"
-	}
+		"Id": 1,
+		"FirstName": "Jan",
+		"LastName": "Kowalski",
+		"Pesel": "12345678901",
+		"PasswordHash": "test1"
+	},
 	{
-		"id": 2,
-		"firstName": "Adam",
-		"lastName": "Nowak",
-		"pesel": "12345678903",
-		"passwordHash": "test2"
+		"Id": 2,
+		"FirstName": "Adam",
+		"LastName": "Nowak",
+		"Pesel": "12345678903",
+		"PasswordHash": "test2"
 	}
 ]
