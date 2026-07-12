@@ -1,4 +1,5 @@
 namespace Banking.Core.Models;
+using Banking.Core.Enums;
 
 public class Transaction
 {
