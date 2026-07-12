@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="Banking.Core/Banking.Core.csproj" />
   <Project Path="Banking.Infrastructure/Banking.Infrastructure.csproj" />
+  <Project Path="Banking.Server/Banking.Server.csproj" />
   <Project Path="Banking.Tests/Banking.Tests.csproj" />
 </Solution>
