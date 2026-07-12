@@ -1,0 +1,26 @@
+﻿[
+  {
+    "Id": 1,
+    "Type": "Deposit",
+    "SourceAccountNumber": null,
+    "DestinationAccountNumber": "1000000001",
+    "Amount": 1000.00,
+    "Timestamp": "2026-07-12T18:00:00Z"
+  },
+  {
+    "Id": 2,
+    "Type": "Transfer",
+    "SourceAccountNumber": "1000000001",
+    "DestinationAccountNumber": "1000000002",
+    "Amount": 250.00,
+    "Timestamp": "2026-07-12T18:15:00Z"
+  },
+  {
+    "Id": 3,
+    "Type": "Withdrawal",
+    "SourceAccountNumber": "1000000002",
+    "DestinationAccountNumber": null,
+    "Amount": 100.00,
+    "Timestamp": "2026-07-12T18:30:00Z"
+  }
+]
