@@ -45,8 +45,28 @@ public class CustomerRepository
 
     public void Update(Customer customer)
     {
-        throw new NotImplementedException();
+
+        var customers = GetAll();
+
+        var index = customers.FindIndex(c => c.Id == customer.Id);
+
+        if (index == -1)
+        {
+            return;
+        }
+
+        customers[index] = customer;
+
+        var json = JsonSerializer.Serialize(
+            customers,
+            new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
+
+        File.WriteAllText(DataPaths.Customers, json);
     }
+
 
     public void Delete(int id)
     {
