@@ -70,7 +70,20 @@ public class CustomerRepository
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+
+        var customers = GetAll();
+
+        customers.RemoveAll(customer => customer.Id == id);
+
+        var json = JsonSerializer.Serialize(
+            customers,
+            new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
+
+        File.WriteAllText(DataPaths.Customers, json);
+    
     }
 
 }
