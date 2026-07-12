@@ -1,3 +1,4 @@
+using Banking.Core.Models;
 namespace Banking.Infrastructure.Repositories;
 
 public class AccountRepository
