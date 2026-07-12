@@ -1,4 +1,5 @@
 using Banking.Core.Models;
+using System.Text.Json;
 namespace Banking.Infrastructure.Repositories;
 
 public class AccountRepository
@@ -15,7 +16,16 @@ public class AccountRepository
 
     public List<Account> GetAll()
     {
-        throw new NotImplementedException();
+
+        var json = File.ReadAllText(DataPaths.Accounts);
+
+        return JsonSerializer.Deserialize<List<Account>>(
+            json,
+            new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            })
+            ?? [];
     }
 
     public void Add(Account account)
