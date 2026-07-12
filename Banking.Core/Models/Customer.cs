@@ -1,4 +1,5 @@
 ﻿using System;
+namespace Banking.Core.Models;
 
 public class Customer
 {
