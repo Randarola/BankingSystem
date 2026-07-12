@@ -1,35 +1,42 @@
-namespace Banking.Infrastructure.Repositories;
+    using Banking.Core.Models;
+    using System.Text.Json;
 
-public class CustomerRepository
-{
-    public Customer? GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
+    namespace Banking.Infrastructure.Repositories;
 
-    public Customer? GetByPesel(string pesel)
+    public class CustomerRepository
     {
-        throw new NotImplementedException();
-    }
+        public Customer? GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Customer? GetByPesel(string pesel)
+        {
+            throw new NotImplementedException();
+        }
+
 
     public List<Customer> GetAll()
     {
-        throw new NotImplementedException();
+        var json = File.ReadAllText(DataPaths.Customers);
+
+        return JsonSerializer.Deserialize<List<Customer>>(json)!;
     }
+
 
     public void Add(Customer customer)
-    {
-        throw new NotImplementedException();
-    }
+        {
+            throw new NotImplementedException();    
+        }
 
-    public void Update(Customer customer)
-    {
-        throw new NotImplementedException();
-    }
+        public void Update(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
 
-    public void Delete(int id)
-    {
-        throw new NotImplementedException();
-    }
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-}
+    }
