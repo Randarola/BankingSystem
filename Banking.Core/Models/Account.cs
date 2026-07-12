@@ -6,7 +6,7 @@ public class Account
 	public int CustomerId { get; private set; }
 	public decimal Balance { get; private set; }
 
-	public Account(int id, string accountNumber, int customerId, decimal balance)
+	public Account(string accountNumber, int customerId, decimal balance)
 	{
 		AccountNumber = accountNumber;
 		CustomerId = customerId;
