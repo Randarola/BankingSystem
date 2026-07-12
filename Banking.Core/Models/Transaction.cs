@@ -13,7 +13,7 @@ public class Transaction
 
     public Transaction(
         int id,
-        TransactionType type, string? sourceAccountNumber, string? destinationAccountNumber, decimal amount)
+        TransactionType type, string? sourceAccountNumber, string? destinationAccountNumber, decimal amount, DateTime timestamp)
     {
 
         if (amount <= 0)
@@ -25,6 +25,6 @@ public class Transaction
         SourceAccountNumber = sourceAccountNumber;
         DestinationAccountNumber = destinationAccountNumber;
         Amount = amount;
-        Timestamp = DateTime.UtcNow;
+        Timestamp = timestamp;
     }
 }
