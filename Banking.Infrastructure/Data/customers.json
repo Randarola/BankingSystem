@@ -1,0 +1,16 @@
+[
+	{
+		"id": 1,
+		"firstName": "Jan",
+		"lastName": "Kowalski",
+		"pesel": "12345678901",
+		"passwordHash": "test1"
+	}
+	{
+		"id": 2,
+		"firstName": "Adam",
+		"lastName": "Nowak",
+		"pesel": "12345678903",
+		"passwordHash": "test2"
+	}
+]
