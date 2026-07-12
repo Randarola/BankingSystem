@@ -26,7 +26,7 @@ public class TransactionRepository
 
     public List<Transaction> GetByAccountNumber(string accountNumber)
     {
-        throw new NotImplementedException();
+        return GetAll().Where(transaction => transaction.SourceAccountNumber == accountNumber || transaction.DestinationAccountNumber == accountNumber).ToList();
     }
 
     public void Add(Transaction transaction)
