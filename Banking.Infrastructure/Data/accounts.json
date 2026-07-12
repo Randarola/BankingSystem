@@ -1,0 +1,12 @@
+﻿[
+  {
+    "AccountNumber": "1000000001",
+    "CustomerId": 1,
+    "Balance": 1500.50
+  },
+  {
+    "AccountNumber": "1000000002",
+    "CustomerId": 2,
+    "Balance": 3200.00
+  }
+]
