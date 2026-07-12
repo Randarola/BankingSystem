@@ -1,19 +1,20 @@
-    using Banking.Core.Models;
-    using System.Text.Json;
+using Banking.Core.Models;
+using System.Text.Json;
+using System.Linq;
 
-    namespace Banking.Infrastructure.Repositories;
+namespace Banking.Infrastructure.Repositories;
 
-    public class CustomerRepository
+public class CustomerRepository
+{
+    public Customer? GetById(int id)
     {
-        public Customer? GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+       return GetAll().FirstOrDefault(customer => customer.Id == id);
+    }
 
-        public Customer? GetByPesel(string pesel)
-        {
-            throw new NotImplementedException();
-        }
+    public Customer? GetByPesel(string pesel)
+    {
+        return GetAll().FirstOrDefault(customer => customer.Pesel == pesel);
+    }
 
 
     public List<Customer> GetAll()
@@ -25,18 +26,18 @@
 
 
     public void Add(Customer customer)
-        {
-            throw new NotImplementedException();    
-        }
-
-        public void Update(Customer customer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
+    {
+        throw new NotImplementedException();    
     }
+
+    public void Update(Customer customer)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Delete(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+}
