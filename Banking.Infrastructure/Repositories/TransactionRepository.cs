@@ -31,7 +31,23 @@ public class TransactionRepository
 
     public void Add(Transaction transaction)
     {
-        throw new NotImplementedException();
+        var transactions = GetAll();
+
+        transactions.Add(transaction);
+
+        var json = JsonSerializer.Serialize(
+            transactions,
+            new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                Converters =
+                {
+            new JsonStringEnumConverter()
+                }
+            });
+
+        File.WriteAllText(DataPaths.Transactions, json);
+
     }
 
 }
