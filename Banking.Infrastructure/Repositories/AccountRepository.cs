@@ -30,12 +30,44 @@ public class AccountRepository
 
     public void Add(Account account)
     {
-        throw new NotImplementedException();
+        var accounts = GetAll();
+
+        accounts.Add(account);
+
+        var json = JsonSerializer.Serialize(
+            accounts,
+            new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
+
+        File.WriteAllText(DataPaths.Accounts, json);
+
     }
 
     public void Update(Account account)
     {
-        throw new NotImplementedException();
+        var accounts = GetAll();
+
+        var index = accounts.FindIndex(
+            a => a.AccountNumber == account.AccountNumber);
+
+        if (index == -1)
+        {
+            return;
+        }
+
+        accounts[index] = account;
+
+        var json = JsonSerializer.Serialize(
+            accounts,
+            new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
+
+        File.WriteAllText(DataPaths.Accounts, json);
+
     }
 
 }
