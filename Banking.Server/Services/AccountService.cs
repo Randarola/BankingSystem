@@ -13,6 +13,13 @@ namespace Banking.Server.Services
         {
             _accountRepository = accountRepository;
             _transactionRepository = transactionRepository;
-        }   
+        }
+
+        public decimal? GetBalance(int customerId)
+        {
+            var account = _accountRepository.GetByCustomerId(customerId);
+
+            return account?.Balance;
+        }
     }
 }
