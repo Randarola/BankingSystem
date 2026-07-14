@@ -21,5 +21,27 @@ namespace Banking.Server.Services
 
             return account?.Balance;
         }
+
+        public bool Deposit(string accountNumber, decimal amount)
+        {
+            var account = _accountRepository.GetByAccountNumber(accountNumber);
+            if (account == null)
+            {
+                return false;
+            }
+            account.Deposit(amount);
+            _accountRepository.Update(account);
+
+            _transactionRepository.Add(
+                  new Transaction(
+                      id: _transactionRepository.GetAll().Count + 1,
+                      type: TransactionType.Deposit,
+                      sourceAccountNumber: null,
+                      destinationAccountNumber: account.AccountNumber,
+                      amount: amount,
+                      timestamp: DateTime.UtcNow));
+
+            return true;
+        }
     }
 }
