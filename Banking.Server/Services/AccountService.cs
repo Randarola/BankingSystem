@@ -43,5 +43,28 @@ namespace Banking.Server.Services
 
             return true;
         }
+
+        public bool Withdraw(string accountNumber, decimal amount)
+        {
+            var account = _accountRepository.GetByAccountNumber(accountNumber);
+            if (account == null)
+            {
+                return false;
+            }
+            if (!account.Withdraw(amount))
+            {
+                return false; // Insufficient funds
+            }
+            _accountRepository.Update(account);
+            _transactionRepository.Add(
+                  new Transaction(
+                      id: _transactionRepository.GetAll().Count + 1,
+                      type: TransactionType.Withdrawal,
+                      sourceAccountNumber: account.AccountNumber,
+                      destinationAccountNumber: null,
+                      amount: amount,
+                      timestamp: DateTime.UtcNow));
+            return true;
+        }
     }
 }
