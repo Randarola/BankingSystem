@@ -9,10 +9,12 @@ namespace Banking.Server.Networking
     {
         private readonly TcpListener _listener;
         private readonly AuthService _authService;
+        private readonly AccountService _accountService;
         public TcpServer(int port)
         {
             _listener = new TcpListener(IPAddress.Any, port);
             _authService = new AuthService(new CustomerRepository());
+            _accountService = new AccountService(new AccountRepository(), new TransactionRepository());
         }
 
         public void Start()
@@ -49,12 +51,12 @@ namespace Banking.Server.Networking
 
         private string ProcessRequest(string request)
         {
-            string[] parts = request.Split('|');
-            
-            if(parts.Length == 0)
+            if (string.IsNullOrWhiteSpace(request))
             {
-                return "ERROR|Invalid request format";
+                return "ERROR|Empty request";
             }
+
+            string[] parts = request.Split('|');
 
             switch (parts[0])
             {
@@ -68,7 +70,18 @@ namespace Banking.Server.Networking
 
                     var customer = _authService.Login(pesel, password);
                     return customer != null ? "LOGIN_SUCCESS" : "LOGIN_FAILED";
-
+                case "BALANCE":
+                    if (parts.Length != 2)
+                    {
+                        return "ERROR|Invalid BALANCE request format";
+                    }
+                    string customerIdStr = parts[1];
+                    if (!int.TryParse(customerIdStr, out int customerId))
+                    {
+                        return "ERROR|Invalid customer ID";
+                    }
+                    var balance = _accountService.GetBalance(customerId);
+                    return balance.HasValue ? $"BALANCE|{balance.Value}" : "ERROR|Customer not found";
                 default:
                     return "UNKNOWN_COMMAND";
             }
